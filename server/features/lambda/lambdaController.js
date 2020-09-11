@@ -1,5 +1,4 @@
 const path = require('path');
-const fs = require('fs');
 
 const ApiController = require('../../base/apiController');
 const LambdaService = require('../lambda/lambdaService');

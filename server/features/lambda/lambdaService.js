@@ -1,6 +1,4 @@
 const ApiService = require('../../base/apiService');
-    const LambdaRepository = require('../lambda/lambdaRepository');
-
 /**
  * Lambda service 
  */
@@ -8,7 +6,6 @@ class LambdaService extends ApiService {
     constructor(context) {
         super(context);
         this.user = context.user;
-        this.lambdaRepository = new LambdaRepository(context);
     }
 
     /**

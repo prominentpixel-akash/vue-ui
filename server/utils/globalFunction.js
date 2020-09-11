@@ -5,9 +5,6 @@ class GlobalFunctionsAndVariables {
 
     static initializeGlobals(applicationRoot) {
         global.applicationRoot = applicationRoot;
-        global.dbr = {
-            pool: {}
-        };
     }
 };
 

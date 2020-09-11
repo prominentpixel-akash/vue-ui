@@ -1,7 +1,7 @@
 const ApiContext = require('./apiContext');
 const promise = require('bluebird');
 
-const {genUUID, toDBFormatWithSeconds, generateHash, compareHash} = require('../utils/general');
+const {genUUID, generateHash, compareHash} = require('../utils/general');
 
 /**
  * Provides the base class for API services.
@@ -40,10 +40,6 @@ class ApiService {
 
     genUUID() {
         return genUUID();
-    }
-
-    toDBFormatWithSeconds() {
-        return toDBFormatWithSeconds();
     }
 
     async generatePasswordHash(password) {

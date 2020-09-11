@@ -87,13 +87,7 @@ class ControllerFactory {
      * @return {ApiContext} A new instance of `ApiContext`, initialized around the specified `request`.
      */
     createContext(request) {
-        let connection = null;
-        // TODO: enable this after integrating passport
-        // if(!request.user) {
-        //     throw new Error('Unauthorised user');
-        // }
-
-        return new ApiContext(request, connection);
+        return new ApiContext(request);
     }
 
     /**

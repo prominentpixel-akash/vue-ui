@@ -68,13 +68,7 @@ class MiddlewareFactory {
             }
             try {
                 if (isClassStructur) {
-                    let connection = null;
-                    try {
-                        connection = db.pool;
-                    } catch (err) {
-                        log.warn('Unable to fetch current user connection', err);
-                    }
-                    const context = new ApiContext(req, connection);
+                    const context = new ApiContext(req);
                     await (new handler(context, args)).fire(next);
                 } else {
                     handler(...args)(req, res, next);
