@@ -27,17 +27,12 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(require('cookie-parser')('wbygfnZQChDVAZZPVPGxxxTgWcrkadPS7BKAOK)#@0pihsM'));
-
 app.use(bodyParser.raw());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
   limit: '100mb'
 }));
-
-//for future use 
-// require('./lib/db/dbConnection').initialize();
 
 require('./routes');
 
