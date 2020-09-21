@@ -1,4 +1,6 @@
 const ApiService = require('../../base/apiService');
+const https = require('https');
+
 /**
  * Lambda service 
  */
@@ -20,9 +22,26 @@ class LambdaService extends ApiService {
      * @param id lambda id
      */
     async getLambdaById(id) {
-        const data = [];
+        return new Promise((resolve, reject) => {
+            https.get('https://d39z2rqchf.execute-api.us-east-2.amazonaws.com/default/random-number-generator', (resp) => {
+                let data = '';
 
-        return data;
+                // A chunk of data has been recieved.
+                resp.on('data', (chunk) => {
+                    data += chunk;
+                });
+
+                // The whole response has been received. Print out the result.
+                resp.on('end', () => {
+                    console.log(JSON.parse(data));
+                    resolve(JSON.parse(data));
+                });
+
+            }).on("error", (err) => {
+                console.log("Error: " + err.message);
+                reject(err);
+            });
+        })
     }
 
     /**
