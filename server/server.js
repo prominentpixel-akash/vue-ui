@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+debugger;
 const GlobalFunctions = require('./utils/globalFunction');
 const appSetting = require('./config/settings');
 const ApplicationError = require('./base/applicationError');
@@ -10,6 +11,28 @@ global.app = express();
 
 GlobalFunctions.initializeGlobals(__dirname);
 appSetting.initialize();
+
+
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+const CognitoUserPool = AmazonCognitoIdentity.CognitoUserPool;
+const AWS = require('aws-sdk');
+const request = require('request');
+const jwkToPem = require('jwk-to-pem');
+const jwt = require('jsonwebtoken');
+global.fetch = require('node-fetch');
+
+const poolData = {
+  UserPoolId : "ap-south-1_puUadfKhW", // Your user pool id here
+  ClientId : "67rmt5icmjejbgc0hpt7ibgmsa" // Your client id here
+}; const pool_region = 'ap-south-1';
+
+const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+
+// Initialize the Amazon Cognito credentials provider
+AWS.config.region = 'ap-south-1'; // Region
+AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  IdentityPoolId: 'ap-south-1:f713fe93-681b-4016-8d32-46322154dceb',
+});
 
 const corsOptions = {
   origin: function (origin, callback) {
