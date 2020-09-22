@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const GlobalFunctions = require('./utils/globalFunction');
-const appSetting = require('./config/settings');
 const ApplicationError = require('./base/applicationError');
+const appSetting = require('./config/settings');
 
 global.app = express();
 
@@ -35,6 +34,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 require('./routes');
+
 
 app.listen(8000, () => {
   console.log(`App listening on port 8000`);
