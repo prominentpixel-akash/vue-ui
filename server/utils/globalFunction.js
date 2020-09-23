@@ -5,6 +5,8 @@ class GlobalFunctionsAndVariables {
 
     static initializeGlobals(applicationRoot) {
         global.applicationRoot = applicationRoot;
+        global.fetch = require('node-fetch');
+        global.navigator = () => null;
     }
 };
 
