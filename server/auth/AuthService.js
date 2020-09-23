@@ -17,7 +17,7 @@ exports.Register = function (body, callback) {
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: "email", Value: email }));
     userPool.signUp(name, password, attributeList, null, function (err, result) {
         if (err)
-            callback(err);
+            return callback(err);
         var cognitoUser = result.user;
         console.log(cognitoUser);
         callback(null, cognitoUser);
@@ -39,10 +39,10 @@ exports.Login = function (body, callback) {
     cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: function (result) {
             var accesstoken = result.getAccessToken().getJwtToken();
-            callback(null, accesstoken);
+            return callback(null, accesstoken);
         },
         onFailure: (function (err) {
-            callback(err);
+            return callback(err);
         })
     })
 };
