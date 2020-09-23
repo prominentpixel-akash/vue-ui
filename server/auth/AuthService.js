@@ -1,4 +1,4 @@
-const appSetting = require('./config/settings');
+const appSetting = require('../config/settings');
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 const poolData = {
