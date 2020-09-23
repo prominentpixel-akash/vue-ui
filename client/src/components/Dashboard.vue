@@ -19,16 +19,6 @@
         <v-btn large color="primary"  @click="getLambdaById(2)">Call Lambda 2</v-btn>
       </div>
     </v-col>
-<!--    <v-col class="text-center" cols="12" sm="3">
-      <div class="my-2">
-        <v-btn large color="primary"  @click="getLambdaById(3)">Call Lambda 3</v-btn>
-      </div>
-    </v-col>
-    <v-col class="text-center" cols="12" sm="3">
-      <div class="my-2">
-        <v-btn large color="primary"  @click="getLambdaById(4)">Call Lambda 4</v-btn>
-      </div>
-    </v-col>-->
   </v-row>
 </template>
   </v-container>

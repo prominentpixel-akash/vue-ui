@@ -7,26 +7,22 @@
       <div class="d-flex align-center">
         <span class="mr-2">Vue</span>
       </div>
-
       <v-spacer></v-spacer>
-
     </v-app-bar>
-
     <v-main>
-      <Dashboard/>
+      <Login/>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Dashboard from './components/Dashboard.vue'
-
+import Login from './components/Login.vue'
 export default Vue.extend({
   name: 'App',
 
   components: {
-    Dashboard
+    Login
   },
 
   data: () => ({

@@ -2,16 +2,19 @@
   <div class='home'>
     <img alt='Vue logo' src='../assets/logo.png' />
     <Dashboard msg='Welcome to Your Vue.js + TypeScript App' />
+    <Login msg='Welcome to Your Vue.js + TypeScript App' />
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
-import Dashboard from '@/components/Dashboard.vue' // @ is an alias to /src
+import Login from '@/components/Login.vue'
+import Dashboard from '@/components/Dashboard.vue'
 
 @Component({
   components: {
-    Dashboard
+    Dashboard,
+    Login
   },
   mounted () {
     this.$store.dispatch('fetchUser')

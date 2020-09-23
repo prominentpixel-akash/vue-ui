@@ -13,3 +13,13 @@ export const getLambdaById = ({ commit }: {commit: Function}, id: number) => {
       commit('SET_LAMBDA', response.data)
     })
 }
+
+/*
+export const getLogin = ({ commit }: {commit: Function}, username: string, password: string) => {
+  Lambda.getLoginByUsernamePassword(username, password)
+    .then(response => {
+      console.log('username', username)
+      commit('SET_LOGIN', response.data)
+    })
+}
+*/
