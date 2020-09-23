@@ -6,10 +6,8 @@ export default {
   },
   getById (id: number) {
     return Api.get('lambda/' + id)
+  },
+  getLoginByUsernamePassword (username: string, password: string) {
+    return Api.get('auth/login/' + username + ' ' + password)
   }
-/*  getLoginByUsernamePassword (username: string, password: string) {
-    console.log(username)
-    console.log(password)
-    return Api.get('auth/login/' + username + ' ' + password);
-  } */
 }

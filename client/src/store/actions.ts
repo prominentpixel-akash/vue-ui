@@ -14,12 +14,10 @@ export const getLambdaById = ({ commit }: {commit: Function}, id: number) => {
     })
 }
 
-/*
-export const getLogin = ({ commit }: {commit: Function}, username: string, password: string) => {
-  Lambda.getLoginByUsernamePassword(username, password)
+export const getLogin =
+  ({ commit }: {commit: Function}, ) => {
+  Lambda.getLoginByUsernamePassword()
     .then(response => {
-      console.log('username', username)
       commit('SET_LOGIN', response.data)
     })
 }
-*/
