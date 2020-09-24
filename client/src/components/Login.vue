@@ -15,16 +15,16 @@
                   <v-form ref="loginForm" v-model="valid" lazy-validation>
                     <v-row>
                       <v-col cols="12">
-                        <v-text-field v-model="username" :rules="loginUserRules" label="User Name" required></v-text-field>
+                        <v-text-field v-model="user.username" :rules="loginUserRules" label="User Name" required></v-text-field>
                       </v-col>
                       <v-col cols="12">
-                        <v-text-field v-model="password" :append-icon="show1?'eye':'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
+                        <v-text-field v-model="user.password" :append-icon="show1?'eye':'eye-off'" :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1"></v-text-field>
                       </v-col>
                       <v-col class="d-flex" cols="12" sm="6" xsm="12">
                       </v-col>
                       <v-spacer></v-spacer>
                       <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                        <v-btn x-large block :disabled="!valid" color="success" @click="getLogin(this.username,this.password)"> Login </v-btn>
+                      <v-btn x-large block :disabled="!valid" color="success" @click="users(user)"> Login </v-btn>
                       </v-col>
                     </v-row>
                   </v-form>
@@ -75,12 +75,14 @@ export default Vue.extend({
       { name: 'Login', icon: 'mdi-account' },
       { name: 'Register', icon: 'mdi-account-outline' }
     ],
+    user: {
+      username: '',
+      password: ''
+    },
     valid: true,
     regusername: '',
     regpassword: '',
-    username: '',
     email: '',
-    password: '',
     loginUserRules: [
       (v: any) => !!v || 'Required'
     ],
@@ -96,15 +98,8 @@ export default Vue.extend({
   }),
   methods: {
     ...mapActions([
-      'getLogin'
-    ])/*
-    getLogins () {
-      const payload = {
-        username: this.username,
-        password: this.password
-      }
-      this.$store.dispatch('getLogins', payload)
-    } */
+      'users'
+    ])
   }
 })
 </script>

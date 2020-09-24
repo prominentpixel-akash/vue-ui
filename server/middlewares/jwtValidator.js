@@ -5,7 +5,7 @@ const request = require('request');
 exports.Validate = function (req, res, next) {
     var token = req.headers['authorization'];
     request({
-        url: `https://cognitoidp.${appSetting.cognito.region}.amazonaws.com/${appSetting.cognito.userPoolId}/.well-known/jwks.json`,
+        url: `https://cognito-idp.${appSetting.cognito.region}.amazonaws.com/${appSetting.cognito.userPoolId}/.well-known/jwks.json`,
         json: true
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {

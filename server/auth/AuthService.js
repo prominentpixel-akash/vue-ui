@@ -25,14 +25,14 @@ exports.Register = function (body, callback) {
 }
 
 exports.Login = function (body, callback) {
-    var userName = body.name;
+    var username = body.username;
     var password = body.password;
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-        Username: userName,
-        Password: password
+        username: username,
+        password: password
     });
     var userData = {
-        Username: userName,
+        username: username,
         Pool: userPool
     }
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);
