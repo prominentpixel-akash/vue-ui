@@ -9,9 +9,9 @@ const poolData = {
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 exports.Register = function (body, callback) {
-    var name = body.name;
+    var name = body.regusername;
     var email = body.email;
-    var password = body.password;
+    var password = body.regpassword;
     var attributeList = [];
 
     attributeList.push(new AmazonCognitoIdentity.CognitoUserAttribute({ Name: "email", Value: email }));
@@ -19,7 +19,6 @@ exports.Register = function (body, callback) {
         if (err)
             return callback(err);
         var cognitoUser = result.user;
-        console.log(cognitoUser);
         callback(null, cognitoUser);
     })
 }

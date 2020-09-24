@@ -25,5 +25,6 @@ exports.login = function (req, res) {
             res.send(err)
         else 
             res.send(result);
+
     })
 }
