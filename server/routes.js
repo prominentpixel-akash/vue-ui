@@ -7,9 +7,9 @@ const indexFiles = glob.sync(
     path.join(__dirname, 'features') + '/**/*[i|I]ndex.js'
 );
 
-app.post('api/auth/register', authController.register);
+app.post('/auth/register', authController.register);
 
-app.post('api/auth/login', authController.login);
+app.post('/auth/login', authController.login);
 
 app.all('*', JwtValidator.Validate, (req, res, next) => {
     return next();

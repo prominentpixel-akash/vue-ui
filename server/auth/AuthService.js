@@ -27,11 +27,11 @@ exports.Login = function (body, callback) {
     var username = body.username;
     var password = body.password;
     var authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-        username: username,
-        password: password
+        Username: username,
+        Password: password
     });
     var userData = {
-        username: username,
+        Username: username,
         Pool: userPool
     }
     var cognitoUser = new AmazonCognitoIdentity.CognitoUser(userData);

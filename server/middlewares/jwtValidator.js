@@ -1,4 +1,6 @@
 
+const jwkToPem = require('jwk-to-pem');
+const jwt = require('jsonwebtoken');
 const appSetting = require('../config/settings');
 const request = require('request');
 

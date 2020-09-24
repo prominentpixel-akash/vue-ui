@@ -1,4 +1,5 @@
 import Lambda from '../apis/Lambda'
+import Authentication from '../apis/Authentication'
 
 export const fetchAllLambdas = ({ commit }: {commit: Function}) => {
   Lambda.all()
@@ -15,15 +16,14 @@ export const getLambdaById = ({ commit }: {commit: Function}, id: number) => {
 }
 
 export const users = ({ commit }: {commit: Function}, user: object) => {
-  // router.push('/Dashboard')
-  Lambda.getUsers(user)
+  Authentication.getUsers(user)
     .then(response => {
       commit('SET_LOGIN', response.data)
     })
 }
 
 export const registerUser = ({ commit }: {commit: Function}, reguser: object) => {
-  Lambda.regUser(reguser)
+  Authentication.regUser(reguser)
     .then(response => {
       commit('SET_LOGIN', response.data)
     })

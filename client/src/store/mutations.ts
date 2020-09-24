@@ -3,5 +3,7 @@ export const SET_LAMBDA = (state: any, lambda: any) => {
 }
 
 export const SET_LOGIN = (state: any, login: any) => {
+  state.snackbar = true
+  state.snackbarText = login.message
   state.login = login
 }
