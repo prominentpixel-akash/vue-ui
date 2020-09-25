@@ -24,7 +24,7 @@
                       </v-col>
                       <v-spacer></v-spacer>
                       <v-col class="d-flex" cols="12" sm="3" xsm="12" align-end>
-                      <v-btn x-large block :disabled="!valid" color="success" @click="users(user)"> Login </v-btn>
+                      <v-btn x-large block :disabled="!valid" color="success" @click="users(user)" :loading="loading"> Login </v-btn>
                       </v-col>
                     </v-row>
                   </v-form>
@@ -47,7 +47,7 @@
                       </v-col>
                       <v-spacer></v-spacer>
                       <v-col class="d-flex ml-auto" cols="12" sm="3" xsm="12">
-                        <v-btn x-large block :disabled="!valid" color="success" @click="registerUser(reguser)">Register</v-btn>
+                        <v-btn x-large block :disabled="!valid" color="success" @click="registerUser(reguser)" :loading="loading"> Register </v-btn>
                       </v-col>
                     </v-row>
                   </v-form>
@@ -97,13 +97,31 @@ export default Vue.extend({
     rules: {
       required: (value: any) => !!value || 'Required.',
       min: (v: string | any[]) => (v && v.length >= 8) || 'Min 8 characters'
-    }
+    },
+    loading: false
   }),
   methods: {
     ...mapActions([
-      'users',
-      'registerUser'
-    ])
+      'users', 'registerUser'
+    ]),
+    async registerUser (regInfo: any) {
+      this.loading = true
+      await this.$store.dispatch('registerUser', regInfo)
+      this.reguser.regusername = ''
+      this.reguser.regpassword = ''
+      this.reguser.email = ''
+      this.loading = false
+      this.tab = 0
+    },
+    async users (regInfo: any) {
+      this.loading = true
+      await this.$store.dispatch('users', regInfo)
+      if (this.$store.state.isLoggedIn) {
+        this.user.username = ''
+        this.user.password = ''
+      }
+      this.loading = false
+    }
   }
 })
 </script>

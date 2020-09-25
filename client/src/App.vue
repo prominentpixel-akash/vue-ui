@@ -10,7 +10,8 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-main>
-      <Login/>
+      <Dashboard v-if="isLoggedIn"/>
+      <Login v-if="!isLoggedIn" />
     </v-main>
     <v-snackbar
       v-model="snackbar"
@@ -43,19 +44,21 @@
 <script lang="ts">
 import Vue from 'vue'
 import Login from './components/Login.vue'
+import Dashboard from './components/Dashboard.vue'
 import { mapState } from 'vuex'
 export default Vue.extend({
   name: 'App',
 
   components: {
-    Login
+    Login,
+    Dashboard
   },
 
   data: () => ({
     //
   }),
   computed: {
-    ...mapState(['snackbar', 'snackbarText']),
+    ...mapState(['snackbar', 'snackbarText', 'isLoggedIn']),
     snackbarText: {
       get () {
         return this.$store.state.snackbarText
@@ -71,6 +74,9 @@ export default Vue.extend({
       set (value) {
         this.$store.state.snackbar = value
       }
+    },
+    isLoggedIn () {
+      return this.$store.state.isLoggedIn
     }
   }
 })

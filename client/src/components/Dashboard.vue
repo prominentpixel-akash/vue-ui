@@ -11,12 +11,12 @@
   <v-row align="center">
     <v-col class="text-center" cols="12" sm="3">
       <div class="my-2">
-        <v-btn large color="primary" @click="getLambdaById(1)">Call Lambda 1</v-btn>
+        <v-btn large color="primary" @click="getLambdaById(1)" :loading="btnLoading">Call Lambda 1</v-btn>
       </div>
     </v-col>
     <v-col class="text-center" cols="12" sm="3">
       <div class="my-2">
-        <v-btn large color="primary"  @click="getLambdaById(2)">Call Lambda 2</v-btn>
+        <v-btn large color="primary"  @click="getLambdaById(2)" :loading="btnLoading1">Call Lambda 2</v-btn>
       </div>
     </v-col>
   </v-row>
@@ -26,17 +26,25 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mapActions } from 'vuex'
 
 export default Vue.extend({
   name: 'Dashboard',
 
   data: () => ({
+    btnLoading: false,
+    btnLoading1: false
   }),
   methods: {
-    ...mapActions([
-      'getLambdaById'
-    ])
+    async getLambdaById (id: number) {
+      if (id === 1) {
+        this.btnLoading = true
+      } else {
+        this.btnLoading1 = true
+      }
+      await this.$store.dispatch('getLambdaById', id)
+      this.btnLoading = false
+      this.btnLoading1 = false
+    }
   }
 })
 </script>

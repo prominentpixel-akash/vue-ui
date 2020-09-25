@@ -7,7 +7,7 @@ export default {
     return Api.get(lambdaUrl + 'lambda/all')
   },
   getById (id: number) {
-    return Api.get(lambdaUrl + 'lambda/' + id)
+    return Api.get(lambdaUrl + 'lambda/' + id, { headers: { authorization: localStorage.getItem('token') } })
   },
   getUsers (user: object) {
     return Api.post('auth/login', user)
